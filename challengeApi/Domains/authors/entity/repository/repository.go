@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"challengeApi/model"
+	"FullStack-Challenge/challengeApi/model"
 )
 
 type RepositoryInterface interface {

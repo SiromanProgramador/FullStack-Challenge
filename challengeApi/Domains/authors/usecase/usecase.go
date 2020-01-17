@@ -1,8 +1,8 @@
 package usecase
 
 import (
-	"challengeApi/Domains/authors/entity/repository"
-	"challengeApi/model"
+	"FullStack-Challenge/challengeApi/Domains/authors/entity/repository"
+	"FullStack-Challenge/challengeApi/model"
 )
 
 type UsecaseInterface interface {

@@ -1,7 +1,7 @@
 package model
 
 import (
-	presenters "challengeApi/presenters"
+	presenters "FullStack-Challenge/challengeApi/presenters"
 
 	"gopkg.in/mgo.v2/bson"
 )
@@ -16,6 +16,6 @@ type Book struct {
 	Id       bson.ObjectId       `json:"_id,omitempty," bson:"_id,omitempty"`
 	Name     string              `json:"name,omitempty," bson:"name,omitempty"`
 	ISBN     string              `json:"isbn,omitempty," bson:"isbn,omitempty"`
-	AuthosId bson.ObjectId       `json:"authorId,omitempty," bson:"authorId,omitempty"`
+	AuthorId bson.ObjectId       `json:"authorId,omitempty," bson:"authorId,omitempty"`
 	Instance presenters.Instance `json:"instance,omitempty," bson:"instance,omitempty"`
 }

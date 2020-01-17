@@ -1,10 +1,11 @@
 package _interface
 
 import (
-	Usecase "challengeApi/Domains/authors/usecase"
-	"challengeApi/model"
-	"challengeApi/presenters"
+	Usecase "FullStack-Challenge/challengeApi/Domains/authors/usecase"
+	"FullStack-Challenge/challengeApi/model"
+	"FullStack-Challenge/challengeApi/presenters"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"strings"
@@ -32,6 +33,7 @@ func AuthorInterface(usecase Usecase.UsecaseInterface) InterfaceInterface {
 
 func (ui *Interface) GetAll(w http.ResponseWriter, r *http.Request) {
 
+	fmt.Println("entra")
 	var qfilter model.QueryFilters
 	var response []interface{}
 
@@ -41,7 +43,6 @@ func (ui *Interface) GetAll(w http.ResponseWriter, r *http.Request) {
 		presenters.ReturnHttpError(errAuthors, w, http.StatusBadRequest)
 		return
 	}
-
 	err := presenters.ArrayStructToBson(authors, &response)
 	if err != nil {
 		presenters.ReturnHttpError(err, w, http.StatusBadRequest)

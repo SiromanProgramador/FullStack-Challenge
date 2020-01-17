@@ -1,8 +1,8 @@
 package mongodb
 
 import (
-	"challengeApi/Domains/books/entity/repository"
-	"challengeApi/model"
+	"FullStack-Challenge/challengeApi/Domains/books/entity/repository"
+	"FullStack-Challenge/challengeApi/model"
 
 	mgo "gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"

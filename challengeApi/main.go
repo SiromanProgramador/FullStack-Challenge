@@ -1,14 +1,15 @@
 package main
 
 import (
-	AuthorsRepo "challengeApi/Domains/authors/entity/repository/mongodb"
-	AuthorsInterface "challengeApi/Domains/authors/interface"
-	AuthorsUsecase "challengeApi/Domains/authors/usecase"
-	"challengeApi/presenters"
+	"FullStack-Challenge/challengeApi/Boot"
+	AuthorsRepo "FullStack-Challenge/challengeApi/Domains/authors/entity/repository/mongodb"
+	AuthorsInterface "FullStack-Challenge/challengeApi/Domains/authors/interface"
+	AuthorsUsecase "FullStack-Challenge/challengeApi/Domains/authors/usecase"
+	"FullStack-Challenge/challengeApi/presenters"
 
-	BooksRepo "challengeApi/Domains/books/entity/repository/mongodb"
-	BooksInterface "challengeApi/Domains/books/interface"
-	BooksUsecase "challengeApi/Domains/books/usecase"
+	BooksRepo "FullStack-Challenge/challengeApi/Domains/books/entity/repository/mongodb"
+	BooksInterface "FullStack-Challenge/challengeApi/Domains/books/interface"
+	BooksUsecase "FullStack-Challenge/challengeApi/Domains/books/usecase"
 	"fmt"
 	"log"
 	"math"
@@ -24,9 +25,10 @@ var startTime time.Time
 var db *mgo.Database
 
 func main() {
+
 	db = MongoStart()
 	router := loadRouter()
-
+	Boot.Boot(db.Session)
 	log.Fatal(http.ListenAndServe(":8000", router))
 
 }
@@ -39,7 +41,9 @@ func MongoStart() *mgo.Database {
 	}
 	session.SetMode(mgo.Monotonic, true)
 	db := session.DB("challengeDB")
+
 	return db
+
 }
 
 func loadRouter() *mux.Router {

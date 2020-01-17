@@ -1,10 +1,11 @@
 package _interface
 
 import (
-	Usecase "challengeApi/Domains/books/usecase"
-	"challengeApi/model"
-	"challengeApi/presenters"
+	Usecase "FullStack-Challenge/challengeApi/Domains/books/usecase"
+	"FullStack-Challenge/challengeApi/model"
+	"FullStack-Challenge/challengeApi/presenters"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"strings"
@@ -33,21 +34,22 @@ func BooksInterface(usecase Usecase.UsecaseInterface) InterfaceInterface {
 func (ui *Interface) GetAll(w http.ResponseWriter, r *http.Request) {
 
 	var qfilter model.QueryFilters
-	var response bson.M
+	var response []interface{}
 
 	books, errBooks := ui.usecase.GetAll(qfilter)
+
 	if errBooks != nil {
-		presenters.ReturnHttpError(errBooks, w, http.StatusNotFound)
+		presenters.ReturnHttpError(errBooks, w, http.StatusBadRequest)
 		return
 	}
-
-	err := presenters.ArrayStructToBson(books, response)
+	fmt.Println(books)
+	err := presenters.ArrayStructToBson(books, &response)
 	if err != nil {
 		presenters.ReturnHttpError(err, w, http.StatusBadRequest)
 		return
 	}
 
-	presenters.ReturnHttpPayload(response, w)
+	presenters.ReturnHttpPayload(books, w)
 }
 
 func (ui *Interface) GetOne(w http.ResponseWriter, r *http.Request) {
