@@ -1,7 +1,7 @@
 package model
 
 import (
-	"FullStack-Challenge/challengeApi/presenters"
+	presenters "FullStack-Challenge/challengeApi/presenters"
 
 	"gopkg.in/mgo.v2/bson"
 )

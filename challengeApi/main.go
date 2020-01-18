@@ -26,6 +26,7 @@ var db *mgo.Database
 
 func main() {
 
+	//Init DataBase
 	db = MongoStart()
 	router := loadRouter()
 	Boot.Boot(db.Session)

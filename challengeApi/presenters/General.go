@@ -9,6 +9,7 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
+//method to parse strucs to bson
 func StructToBson(structObject interface{}) (bson.M, error) {
 	var bsonToReturn bson.M
 	data, err := bson.Marshal(structObject)
@@ -23,6 +24,7 @@ func StructToBson(structObject interface{}) (bson.M, error) {
 	return bsonToReturn, nil
 }
 
+//method to parse array strucs to bson array
 func ArrayStructToBson(array, outArray interface{}) error {
 	inStructArrData, err := bson.Marshal(array)
 	if err != nil {
@@ -34,10 +36,12 @@ func ArrayStructToBson(array, outArray interface{}) error {
 	return raw.Unmarshal(outArray)
 }
 
+//method to get timenow
 func GetTimeNow() int64 {
 	return time.Now().UnixNano() / int64(time.Millisecond)
 }
 
+//method to push our response in correctly format
 func ReturnHttpPayload(object interface{}, w http.ResponseWriter) {
 	payload, _ := json.Marshal(object)
 	w.Header().Set("Access-Control-Allow-Origin", "*")
@@ -48,6 +52,7 @@ func ReturnHttpPayload(object interface{}, w http.ResponseWriter) {
 	w.Write([]byte(payload))
 }
 
+//methos to push and error return
 func ReturnHttpError(err error, w http.ResponseWriter, httpErrType int) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "limit, includes, skip, sort, filter, select, destination, self, Accept, Accept-Language, Content-Type, Content-Length, Accept-Encoding, Authorization,X-CSRF-Token	")
@@ -57,11 +62,13 @@ func ReturnHttpError(err error, w http.ResponseWriter, httpErrType int) {
 	w.Write([]byte("{\"success\":false,\"error\": \"" + err.Error() + "\"}"))
 }
 
+//method to get all request Values
 func GetRequestValue(key string, r *http.Request) string {
 	params := mux.Vars(r)
 	return params[key]
 }
 
+//class and methos to instance new objects into collections in MongoDB
 const (
 	InstanceStatusActive   string = "ACTIVE"
 	InstanceStatusInactive string = "INACTIVE"
