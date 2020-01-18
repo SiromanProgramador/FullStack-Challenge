@@ -112,7 +112,7 @@ func (ui *Interface) Delete(w http.ResponseWriter, r *http.Request) {
 	//objectID
 	id := presenters.GetRequestValue("id", r)
 
-	//Set the filter user
+	//Set the filter to id
 	queryFilters := model.QueryFilters{
 		Filter: bson.M{"_id": bson.ObjectIdHex(id)},
 	}
