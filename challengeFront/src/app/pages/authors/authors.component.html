@@ -1,5 +1,8 @@
 <h1>Authors </h1>>
 
 <div *ngFor="let author of authors">
-    <p>Name: {{ author.firstName}}, Surname: {{ author.lastName}} </p>
+    <p>Name: 
+        <a [routerLink]="ruta.path" >
+        {{ author.firstName}}
+    </a> </p>
 </div>

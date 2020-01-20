@@ -4,6 +4,7 @@ import { AuthorsComponent } from './authors/authors.component';
 import { BooksComponent } from './books/books.component';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -16,11 +17,14 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
   ],
   exports: [
     AuthorsComponent,
-    BooksComponent
+    BooksComponent,
+    AuthorDetailComponent,
+    BookDetailComponent
 
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ]
 })
 export class PagesModule { }

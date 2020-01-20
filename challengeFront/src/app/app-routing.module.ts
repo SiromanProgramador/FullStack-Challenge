@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthorsComponent } from './pages/authors/authors.component';
 import { BooksComponent} from './pages/books/books.component';
+import { BookDetailComponent } from './pages/book-detail/book-detail.component';
+import { AuthorDetailComponent } from './pages/author-detail/author-detail.component';
 
 
 const routes: Routes = [
@@ -12,6 +14,14 @@ const routes: Routes = [
   {
     path: 'books',
     component: BooksComponent
+  },
+  {
+    path: 'book-detail',
+    component: BookDetailComponent
+  },
+  {
+    path: 'author-detail/:id',
+    component: AuthorDetailComponent
   },
   {
     path:'**',

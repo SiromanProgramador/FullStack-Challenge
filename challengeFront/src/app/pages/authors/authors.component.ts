@@ -9,6 +9,12 @@ import { AuthorService } from 'src/app/shared/author.service';
 export class AuthorsComponent implements OnInit {
 
   authors = [];
+  ruta = 
+    {
+      name: 'Author-Detail',
+      path: '/author-detail/:id'
+    }
+  
 
   constructor(
     private authorService: AuthorService
