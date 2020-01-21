@@ -2,7 +2,7 @@
 
 <div *ngFor="let author of authors">
     <p>Name: 
-        <a [routerLink]="ruta.path" >
+    <a [routerLink]="ruta.path + '/' + author._id" >
         {{ author.firstName}}
     </a> </p>
 </div>

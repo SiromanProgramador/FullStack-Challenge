@@ -10,6 +10,12 @@ export class BooksComponent implements OnInit {
 
   books = [];
 
+  ruta = 
+  {
+    name: 'Book-Detail',
+    path: '/book-detail'
+  }
+
   constructor(
     private bookService: BookService
   ) { }

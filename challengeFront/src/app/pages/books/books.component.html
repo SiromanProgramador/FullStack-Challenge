@@ -2,5 +2,5 @@
 
 
 <div *ngFor="let book of books">
-    <p>Book Name: {{ book.name}}, ISBN: {{ book.isbn}} </p>
+    <a [routerLink]="ruta.path + '/' + book._id">Book Name: {{ book.name}} </a>
 </div>

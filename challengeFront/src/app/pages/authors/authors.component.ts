@@ -12,7 +12,7 @@ export class AuthorsComponent implements OnInit {
   ruta = 
     {
       name: 'Author-Detail',
-      path: '/author-detail/:id'
+      path: '/author-detail'
     }
   
 
